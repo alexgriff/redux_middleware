@@ -14,7 +14,7 @@ class App extends Component {
           <Profile />
           <Button
             color='blue'
-            onClick={actions.fetchProfile}
+            onClick={this.props.fetchProfile}
           >
             Click Here
           </Button>
