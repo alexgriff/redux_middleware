@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
-import { Dimmer, Loader } from 'semantic-ui-react'
+import { Dimmer, Loader, Image } from 'semantic-ui-react'
 
 
 class Profile extends Component {
 
   renderProfile() {
     return (
-      <div>profile goes here</div>
+      <div className='ui center aligned grid'>
+        <div className="ui row">
+          profile goes here...
+        </div>
+      </div>
     )
   }
 
@@ -20,8 +24,8 @@ class Profile extends Component {
 
   render() {
     return (
-      <div style={{minHeight: '400px'}}>
-        {this.props.loading ? renderProfile() : renderLoader()}
+      <div style={{minHeight: '300px'}}>
+        {this.props.loading ? this.renderLoader() : this.renderProfile()}
       </div>
     )
   }
