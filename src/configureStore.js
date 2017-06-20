@@ -1,6 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import reduxThunk from 'redux-thunk'
 
 import App from './App'
 import reducer from './reducers/root'
@@ -8,7 +9,7 @@ import reducer from './reducers/root'
 
 const configureStore = () => {
 
-  const store = createStore(reducer)
+  const store = createStore(reducer, applyMiddleware(reduxThunk))
 
   return (
     <Provider store={store} >

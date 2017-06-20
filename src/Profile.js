@@ -1,12 +1,22 @@
 import React, { Component } from 'react'
-import { Dimmer, Loader } from 'semantic-ui-react'
+import { Dimmer, Loader, Image } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 
 class Profile extends Component {
 
   renderProfile() {
     return (
-      <div>profile goes here</div>
+      <div className='ui center aligned grid'>
+        <div className="ui row">
+          <Image
+            style={{marginTop: '40px'}}
+            shape='circular'
+            src={this.props.profile.picture}
+          />      
+        </div>
+        <h1>{this.props.profile.firstName}</h1>
+      </div>
     )
   }
 
@@ -21,10 +31,17 @@ class Profile extends Component {
   render() {
     return (
       <div style={{minHeight: '400px'}}>
-        {this.props.loading ? renderProfile() : renderLoader()}
+        {this.props.loading ? this.renderLoader() : this.renderProfile()}
       </div>
     )
   }
 }
 
-export default Profile
+const mapStateToProps = (state) => (
+  {
+    loading: state.loading,
+    profile: state.profile
+  }
+)
+
+export default connect(mapStateToProps)(Profile)
