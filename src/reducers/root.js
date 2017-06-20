@@ -1,6 +1,7 @@
 
+const defaultState = {profile: {}, loading: true}
 
-const reducer = (state={}, action) => {
+const reducer = (state=defaultState, action) => {
   return state
 }
 
