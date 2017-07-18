@@ -9,7 +9,20 @@ import reducer from './reducers/root'
 
 const configureStore = () => {
 
-  const store = createStore(reducer, applyMiddleware(reduxThunk))
+  const diyThunk = ({dispatch}) => next => action => {
+    console.log('in the middleware');
+    console.log('next', next);
+    if (typeof action === 'function') {
+      action(dispatch)
+    } else {
+      next(action)
+    }
+
+  }
+
+
+
+  const store = createStore(reducer, applyMiddleware(diyThunk))
 
   return (
     <Provider store={store} >

@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export function fetchProfile() {
+
   return function(dispatch) {
     dispatch({type: "ASYNC_START"});
 
